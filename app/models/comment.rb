@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # This is the base class for all models in the application.
-class ApplicationRecord < ActiveRecord::Base
-  primary_abstract_class
+class Comment < ApplicationRecord
+  belongs_to :user
+  belongs_to :post
 end
