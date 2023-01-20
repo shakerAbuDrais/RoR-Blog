@@ -7,51 +7,53 @@
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
-# rubocop:disable all
+#
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_120_223_351) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_20_223351) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'comments', force: :cascade do |t|
-    t.integer 'authorid'
-    t.integer 'postid'
-    t.text 'text'
-    t.datetime 'updatedat'
-    t.datetime 'createdat'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "comments", force: :cascade do |t|
+    t.integer "authorid"
+    t.integer "postid"
+    t.text "text"
+    t.datetime "updatedat"
+    t.datetime "createdat"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'likes', force: :cascade do |t|
-    t.integer 'authorid'
-    t.integer 'postid'
-    t.datetime 'createdat'
-    t.datetime 'updatedat'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "likes", force: :cascade do |t|
+    t.integer "authorid"
+    t.integer "postid"
+    t.datetime "createdat"
+    t.datetime "updatedat"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'posts', force: :cascade do |t|
-    t.integer 'authorid'
-    t.string 'title'
-    t.text 'text'
-    t.datetime 'createdat'
-    t.datetime 'updatedat'
-    t.integer 'commentsCounter'
-    t.integer 'LikesCounter'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "posts", force: :cascade do |t|
+    t.integer "authorid"
+    t.string "title"
+    t.text "text"
+    t.datetime "createdat"
+    t.datetime "updatedat"
+    t.integer "commentsCounter"
+    t.integer "LikesCounter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'name'
-    t.string 'photo'
-    t.text 'bio'
-    t.datetime 'updatedat'
-    t.datetime 'createdat'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "photo"
+    t.text "bio"
+    t.integer "postsCounter"
+    t.datetime "updatedat"
+    t.datetime "createdat"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
+
 end
