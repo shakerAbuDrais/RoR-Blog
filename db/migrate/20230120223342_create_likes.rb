@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This migration for creating likes table
 class CreateLikes < ActiveRecord::Migration[7.0]
   def change
