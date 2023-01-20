@@ -114,6 +114,8 @@ To run the project, execute the following command:
 ## 🔭 Future Features <a name="future-features"></a>
 
 - Add the rest of the necessary features for a functional blog.
+- Add the signup and signin features 
+- Add the comments and likes features
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
