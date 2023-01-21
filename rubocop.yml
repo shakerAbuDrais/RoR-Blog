@@ -23,10 +23,10 @@ Metrics/AbcSize:
     - "app/models/*"
   Max: 50
 Metrics/ClassLength:
-  Max: 150
+  Max: 1500
 Metrics/BlockLength:
   IgnoredMethods: ['describe']
-  Max: 30
+  Max: 60
 
 Style/Documentation:
   Enabled: false

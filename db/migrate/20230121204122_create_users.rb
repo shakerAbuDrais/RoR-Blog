@@ -1,15 +1,13 @@
 # frozen_string_literal: true
 
-# this is the migration file for the users table
+# This is the migration for the users table.
 class CreateUsers < ActiveRecord::Migration[7.0]
   def change
     create_table :users do |t|
       t.string :name
       t.string :photo
       t.text :bio
-      t.integer :postsCounter
-      t.datetime :updatedat
-      t.datetime :createdat
+      t.integer :posts_counter
 
       t.timestamps
     end
