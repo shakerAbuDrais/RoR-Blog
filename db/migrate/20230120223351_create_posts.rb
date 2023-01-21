@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from social_network (originally 20230120223351)
 class CreatePosts < ActiveRecord::Migration[7.0]
   def change
