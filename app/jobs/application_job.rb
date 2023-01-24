@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Purpose: Base class for all jobs. All jobs inherit from this class.
 class ApplicationJob < ActiveJob::Base
   # Automatically retry jobs that encountered a deadlock
