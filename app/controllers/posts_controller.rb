@@ -1,4 +1,4 @@
-#This is a post controller class with its own methods
+# This is a post controller class with its own methods
 class PostsController < ApplicationController
   def index
     'hello'
