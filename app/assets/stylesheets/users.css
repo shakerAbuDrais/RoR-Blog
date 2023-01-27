@@ -2,105 +2,104 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .container > * {
+}
+
+.container>* {
     margin-bottom: 30px;
-  }
-  
-  h2 {
+}
+
+h2 {
     margin: 0;
-  }
-  
-  p {
+}
+
+p {
     margin: 0;
-  }
-  
-  a {
+}
+
+a {
     all: unset;
-  }
-  
-  .card {
+}
+
+.card {
     display: flex;
     width: 100vw;
     justify-content: center;
     align-items: center;
-  }
-  
-  .card > :not(:last-child) {
+}
+
+.card> :not(:last-child) {
     margin-right: 100px;
-  }
-  
-  .userpic {
+}
+
+.userpic {
     width: 110px;
     height: 110px;
-  }
-  
-  .leftcard {
+}
+
+.leftcard {
     border: 2px solid black;
     width: 50%;
     display: flex;
     flex-direction: column;
-  }
-  
-  .username {
+}
+
+.username {
     padding: 1rem;
     padding-bottom: 0;
-  }
-  
-  .count {
+}
+
+.count {
     align-self: flex-end;
     padding: 0.5rem;
-  }
-  
-  .biodiv {
+}
+
+.biodiv {
     border: 2px solid black;
     width: 80%;
     padding: 0.5rem;
-  }
-  
-  .biodiv > * {
+}
+
+.biodiv>* {
     margin-bottom: 0.5rem;
-  }
-  
-  .postcard {
+}
+
+.postcard {
     border: 2px solid black;
     width: 80%;
     padding: 0.5rem;
     display: flex;
     flex-direction: column;
-  }
-  
-  .postcard > :not(:last-child) {
+}
+
+.postcard> :not(:last-child) {
     margin-bottom: 0.5rem;
-  }
-  
-  .commentscard {
+}
+
+.commentscard {
     border: 2px solid black;
     width: 80%;
     display: flex;
     flex-direction: column;
     padding: 0.5rem;
-  }
-  
-  .subcontainer {
+}
+
+.subcontainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-  }
-  
-  .subcontainer > :not(:last-child) {
+}
+
+.subcontainer> :not(:last-child) {
     margin-bottom: 0.5rem;
-  }
-  
-  .button {
+}
+
+.button {
     padding: 1rem;
     border: 2px solid black;
     box-shadow: 2px 2px;
-  }
-  
-  .container.postscreen > * {
+}
+
+.container.postscreen>* {
     margin-bottom: 2px;
-  }
-  
+}
