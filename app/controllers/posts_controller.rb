@@ -1,10 +1,13 @@
 # This is a post controller class with its own methods
 class PostsController < ApplicationController
   def index
-    'hello'
+    @user = User.find(params[:user_id])
+    @posts = Post.where(:author_id => @user.id)
   end
 
   def show
-    'hello'
+    @post = Post.find(params[:id])
+    @author = User.find(params[:user_id])
+    @comments = Comment.where(:post_id => params[:id])
   end
 end
