@@ -15,4 +15,8 @@ Like
 first_user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-
     0BxGuVvo', bio: 'Teacher from Mexico.')
 
-first_post = Post.create(author_id: 1, title: "the great gatspy", text: "we are here now")
+first_post = Post.create(author_id: User.first.id, title: "the great gatspy", text: "we are here now")
+
+first_comment = Comment.create(author_id:User.first.id, post_id: Post.first.id, text: "This is my first comment")
+
+first_like = Like.create(author_id:User.first.id, post_id: Post.first.id)

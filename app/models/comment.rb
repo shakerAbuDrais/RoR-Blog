@@ -1,9 +1,12 @@
 # This is the base class for all models in the application.
 class Comment < ApplicationRecord
-  belongs_to :user
+  belongs_to :author, class_name: 'User'
   belongs_to :post
+  after_save :update_comments_counter
+
+  private
 
   def update_comments_counter
-    update(commentsCounter: comments.count)
+    post.increment!(:comments_counter)
   end
 end
