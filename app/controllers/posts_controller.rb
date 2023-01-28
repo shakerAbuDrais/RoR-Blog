@@ -1,30 +1,43 @@
-# This is a post controller class with its own methods
 class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @posts = Post.where(author_id: @user.id)
+    @posts = Post.where(author_id: params[:user_id]).order(created_at: :desc).limit(2)
   end
 
   def show
-    @post = Post.find(params[:id])
-    @author = User.find(params[:user_id])
-    @comments = Comment.where(post_id: params[:id])
-    @comment = @post.comments.new
+    @user = User.find(params[:user_id])
+    @post = Post.where(author_id: params[:user_id]).find(params[:id])
+    comment = Comment.new
+    like = Like.new
+    respond_to do |format|
+      format.html { render :show, locals: { comment: comment, like: like } }
+    end
   end
 
   def new
-    @post = Post.new
+    new_post = Post.new
+    respond_to do |format|
+      format.html { render :new, locals: { post: new_post } }
+    end
   end
 
   def create
-    @post = Post.new(params.require(:post).permit(:title, :text))
-    @post.author = current_user
-    if @post.save
-      flash[:success] = 'Post created successfully'
-      redirect_to user_post_path(@post.author, @post)
-    else
-      flash.now[:error] = 'Something went wrong'
-      render :new, status: 422
+    post_params = params.require(:new_post).permit(:title, :text)
+    post = Post.new(post_params)
+    post.author = current_user
+    post.comments_counter = 0
+    post.likes_counter = 0
+    respond_to do |format|
+      format.html do
+        if post.save
+          flash[:notice] = 'Post created successfully'
+          redirect_to users_path
+        else
+          Rails.logger.error(post.errors.full_messages)
+          flash.now[:alert] = 'Post creation failed'
+          render :new, locals: { post: post }
+        end
+      end
     end
   end
 end

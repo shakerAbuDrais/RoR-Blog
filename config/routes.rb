@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get "/users", to: "users#index", as: 'user'
-  get "/posts/new", to: "posts#new", as: 'posts_new'
-  post "posts", to: 'posts#create', as: 'posts_create'
-  get "/users/:id", to: "users#show", as: 'users'
-  get "/users/:user_id/posts", to: "posts#index", as: 'user_posts'
-  get "/users/:user_id/posts/:id", to: "posts#show", as: 'user_post'
-  post 'comments/:user_id/:post_id', to: 'comments#create', as: 'comments_create'
+  root 'users#index'
+  get '/users', to: 'users#index', as: :users
+  get '/users:id', to: 'users#show', as: :user
+  get 'users:user_id/posts', to: 'posts#index', as: :user_posts
+  get 'users:user_id/posts:id', to: 'posts#show', as: :user_post
+  get '/posts/new', to: 'posts#new', as: :new_user_post
+  post '/posts/new', to: 'posts#create' #create_new_post
+  post 'comments/new', to: 'comments#create', as: :new_user_comment #create_new_comment
+  post 'likes/new', to: 'likes#create', as: :new_user_like #create_new_like
 end
