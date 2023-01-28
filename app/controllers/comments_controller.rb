@@ -12,4 +12,3 @@ class CommentsController < ApplicationController
     redirect_to user_post_path(@comment.post.author, @comment.post)
   end
 end
-
