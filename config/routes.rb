@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   post '/posts/new', to: 'posts#create' #create_new_post
   post 'comments/new', to: 'comments#create', as: :new_user_comment #create_new_comment
   post 'likes/new', to: 'likes#create', as: :new_user_like #create_new_like
+  get 'users/:user_id/post/:id' => 'comments#new', as: 'user_comment'
 end
