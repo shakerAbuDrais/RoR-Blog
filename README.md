@@ -100,12 +100,17 @@ To run the project, execute the following command:
 
 <!-- AUTHORS -->
 
-## 👥 Author <a name="authors"></a>
+## 👥 Authors <a name="authors"></a>
 
-👤 **Justo Rago**
+👤 **Shaker AbuDrais**
 
-- GitHub: [@githubhandle](https://github.com/shakerAbuDrais)
-- Twitter: [@twitterhandle](https://twitter.com/shakerabady)
+- GitHub: [@shakerAbuDrais](https://github.com/shakerAbuDrais)
+- Twitter: [@shakerabady](https://twitter.com/shakerabady)
+
+👤 **Shaker AbuDrais**
+
+- GitHub: [@emmiiorji](https://github.com/emmiiorji)
+- Twitter: [@emmiiorji](https://twitter.com/emmiiorji)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
