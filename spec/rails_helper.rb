@@ -6,6 +6,7 @@ require File.expand_path('../config/environment', __dir__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'shoulda/matchers'
+require "capybara/rspec"
 # Add additional requires below this line. Rails is not loaded until this point!
 # rubocop:disable all
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -27,10 +28,14 @@ require 'shoulda/matchers'
 # If you are not using ActiveRecord, you can remove these lines.
 begin
   ActiveRecord::Migration.maintain_test_schema!
+  Capybara.register_driver :selenium_chrome do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
 rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
+Capybara.javascript_driver = :selenium_chrome
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -38,7 +43,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
@@ -57,6 +62,30 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+  config.filter_rails_from_backtrace!
+
+  # DataBase Cleaner
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+  # Tell Database Cleaner how to manage the database for regular tests and Selenium tests:
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+  
+  config.before(:each, js: true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  # This block must be here, do not combine with the other `before(:each)` block.
+  # This makes it so Capybara can see the database.
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
@@ -70,4 +99,5 @@ RSpec.configure do |config|
       with.library :rails
     end
   end
+end
 end

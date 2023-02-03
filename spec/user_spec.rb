@@ -15,15 +15,15 @@ RSpec.describe User, type: :model do
   end
 
   it 'recent posts should return the last 3' do
-    first_post = Post.new(authorid: subject, title: 'Hello', text: 'This is my first post')
-    second_post = Post.new(authorid: subject, title: 'Hello', text: 'This is my second post')
-    third_post = Post.new(authorid: subject, title: 'Hello', text: 'This is my third post')
-    fourth_post = Post.new(authorid: subject, title: 'Hello', text: 'This is my fourth post')
+    first_post = Post.new(author_id: subject, title: 'Hello', text: 'This is my first post')
+    second_post = Post.new(author_id: subject, title: 'Hello', text: 'This is my second post')
+    third_post = Post.new(author_id: subject, title: 'Hello', text: 'This is my third post')
+    fourth_post = Post.new(author_id: subject, title: 'Hello', text: 'This is my fourth post')
     first_post.save
     second_post.save
     third_post.save
     fourth_post.save
 
-    expect { subject.recent_posts }.to_not raise_error
+    expect { subject.last_three_posts_for_user }.to_not raise_error
   end
 end

@@ -5,7 +5,7 @@ RSpec.describe Post, type: :model do
   author = User.create(name: 'Tom & Jerry', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Best friends')
   subject do
     Post.new(title: 'Physics', text: 'This is not my first post', comments_counter: 10, likes_counter: 10,
-             authorid: author)
+             author_id: author)
   end
 
   before { subject.save }
@@ -64,6 +64,6 @@ RSpec.describe Post, type: :model do
   end
 
   it 'should return 5 recent comments' do
-    expect(subject.recent_comments).to eq(subject.comments.order(created_at: :desc).limit(5))
+    expect(subject.five_most_recent_comments_for_post).to eq(subject.comments.order(created_at: :desc).limit(5))
   end
 end
